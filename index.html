@@ -3,33 +3,1082 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Keyla-LAN | Kabel LAN Cross Over</title>
 
-    <!-- Google Font -->
+    <!-- GOOGLE FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome -->
+    <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <link rel="stylesheet" href="style.css">
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f4f7fb;
+            color: #18243a;
+            transition: 0.3s;
+        }
+
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            position: fixed;
+            width: 260px;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            background: linear-gradient(180deg, #0b1f44, #123d78);
+            color: white;
+            padding: 25px 18px;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 10px 30px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: white;
+            color: #0c4a91;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 20px;
+        }
+
+        .logo h2 {
+            font-size: 20px;
+        }
+
+        .logo span {
+            font-size: 10px;
+            opacity: 0.7;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 13px 15px;
+            border-radius: 10px;
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .menu-item:hover,
+        .menu-item.active {
+            background: rgba(255,255,255,0.14);
+            color: white;
+        }
+
+        .menu-item i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-bottom {
+            position: absolute;
+            bottom: 25px;
+            left: 18px;
+            right: 18px;
+        }
+
+        .theme-button {
+            width: 100%;
+            border: none;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .main-content {
+            margin-left: 260px;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            height: 80px;
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            border-bottom: 1px solid #e7ebf2;
+            position: sticky;
+            top: 0;
+            z-index: 500;
+        }
+
+        .topbar h3 {
+            font-size: 16px;
+        }
+
+        .topbar p {
+            color: #8290a7;
+            font-size: 12px;
+        }
+
+        .topbar-icon {
+            width: 42px;
+            height: 42px;
+            background: #eaf3ff;
+            color: #1769aa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+
+        /* ================= SECTION ================= */
+
+        .page-section {
+            padding: 60px 50px;
+            min-height: 100vh;
+        }
+
+        .section-title {
+            margin-bottom: 35px;
+        }
+
+        .section-title span {
+            color: #1769aa;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+            margin: 5px 0;
+        }
+
+        .section-title p {
+            color: #718096;
+            max-width: 650px;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 500px;
+            background: linear-gradient(135deg, #0c3b78, #1976bd);
+            border-radius: 25px;
+            padding: 60px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 80px;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 14px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50px;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #8bd5ff;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 13px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn.primary {
+            background: white;
+            color: #1262a3;
+        }
+
+        .btn.secondary {
+            border: 1px solid rgba(255,255,255,0.4);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        .network-circle {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            position: absolute;
+            left: 40px;
+            top: 40px;
+        }
+
+        .floating-card {
+            position: absolute;
+            padding: 12px 17px;
+            background: white;
+            color: #17568c;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .card-one {
+            top: 15px;
+            right: 0;
+        }
+
+        .card-two {
+            bottom: 20px;
+            left: 0;
+        }
+
+
+        /* ================= WELCOME ================= */
+
+        .welcome-card {
+            display: flex;
+            gap: 25px;
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #e8edf5;
+            box-shadow: 0 10px 35px rgba(30,70,110,0.06);
+            margin-bottom: 35px;
+        }
+
+        .welcome-icon {
+            min-width: 55px;
+            height: 55px;
+            background: #eaf4ff;
+            color: #1769aa;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .welcome-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .welcome-card p {
+            color: #68778d;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+
+        /* ================= INFO ================= */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 28px;
+            border-radius: 18px;
+            border: 1px solid #e8edf5;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(20,70,120,0.1);
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: #eaf4ff;
+            color: #1769aa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .info-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            font-size: 13px;
+            color: #718096;
+            line-height: 1.7;
+        }
+
+
+        /* ================= UPLOAD ================= */
+
+        .upload-card {
+            background: white;
+            border: 2px dashed #b9cee5;
+            padding: 40px;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        .upload-icon {
+            width: 65px;
+            height: 65px;
+            margin: auto;
+            background: #fff0f0;
+            color: #d32f2f;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .upload-card p {
+            color: #8290a7;
+            font-size: 13px;
+            margin: 7px 0 18px;
+        }
+
+        .upload-button,
+        .video-upload {
+            display: inline-block;
+            background: #1268aa;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .upload-button:hover,
+        .video-upload:hover {
+            background: #0d4f86;
+        }
+
+        .file-name {
+            color: #1769aa !important;
+            font-weight: 500;
+        }
+
+
+        /* ================= POWERPOINT PREVIEW ================= */
+
+        .preview-container {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid #e5eaf1;
+        }
+
+        .preview-header {
+            padding: 18px 25px;
+            border-bottom: 1px solid #e5eaf1;
+        }
+
+        .preview-header h3 {
+            font-size: 15px;
+        }
+
+        .preview-header i {
+            color: #1769aa;
+        }
+
+        .ppt-preview {
+            height: 550px;
+            background: #f0f3f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .empty-preview {
+            text-align: center;
+            color: #94a0b2;
+            padding: 30px;
+        }
+
+        .empty-preview i {
+            font-size: 60px;
+            color: #d32f2f;
+            margin-bottom: 15px;
+        }
+
+        .empty-preview h3 {
+            color: #4c596b;
+            margin-bottom: 8px;
+        }
+
+        .empty-preview p {
+            font-size: 13px;
+        }
+
+
+        /* ================= VIDEO ================= */
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid #e5eaf1;
+        }
+
+        .video-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .video-number {
+            width: 48px;
+            height: 48px;
+            background: #eaf4ff;
+            color: #1769aa;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .video-header h3 {
+            font-size: 16px;
+        }
+
+        .video-header p {
+            color: #8793a5;
+            font-size: 12px;
+        }
+
+        .video-preview {
+            height: 270px;
+            background: #101820;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .video-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            inset: 0;
+            color: #8290a7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-placeholder i {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .video-placeholder p {
+            font-size: 12px;
+        }
+
+
+        /* ================= MATERIAL ================= */
+
+        .material-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            display: flex;
+            gap: 20px;
+            border: 1px solid #e5eaf1;
+            margin-bottom: 25px;
+        }
+
+        .material-icon {
+            min-width: 55px;
+            height: 55px;
+            border-radius: 12px;
+            background: #eaf4ff;
+            color: #1769aa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .material-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .material-card p {
+            color: #718096;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .material-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .material-box {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            border: 1px solid #e5eaf1;
+        }
+
+        .material-box > i {
+            font-size: 25px;
+            color: #1769aa;
+            margin-bottom: 15px;
+        }
+
+        .material-box h3 {
+            margin-bottom: 10px;
+        }
+
+        .material-box p,
+        .material-box li {
+            font-size: 13px;
+            color: #718096;
+            line-height: 1.8;
+        }
+
+        .material-box ul {
+            padding-left: 18px;
+        }
+
+
+        /* ================= WIRE ================= */
+
+        .color-section {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #e5eaf1;
+            margin-bottom: 30px;
+        }
+
+        .section-title.small {
+            margin-bottom: 20px;
+        }
+
+        .section-title.small h2 {
+            font-size: 22px;
+        }
+
+        .wire-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .wire {
+            height: 65px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .wire span {
+            width: 28px;
+            height: 28px;
+            background: rgba(0,0,0,0.08);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .white-green {
+            background: linear-gradient(90deg, white 50%, #d9ead3 50%);
+        }
+
+        .green {
+            background: #62a84e;
+            color: white;
+        }
+
+        .white-orange {
+            background: linear-gradient(90deg, white 50%, #ffd7b5 50%);
+        }
+
+        .orange {
+            background: #ed8b32;
+            color: white;
+        }
+
+        .blue {
+            background: #477fba;
+            color: white;
+        }
+
+        .white-blue {
+            background: linear-gradient(90deg, white 50%, #c9def3 50%);
+        }
+
+        .white-brown {
+            background: linear-gradient(90deg, white 50%, #e3c4a5 50%);
+        }
+
+        .brown {
+            background: #895b3c;
+            color: white;
+        }
+
+
+        /* ================= STEPS ================= */
+
+        .steps {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #e5eaf1;
+        }
+
+        .step-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .step {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            padding: 18px;
+            background: #f7faff;
+            border-radius: 12px;
+        }
+
+        .step > span {
+            min-width: 45px;
+            height: 45px;
+            background: #1268aa;
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .step h3 {
+            font-size: 14px;
+        }
+
+        .step p {
+            font-size: 12px;
+            color: #718096;
+        }
+
+
+        /* ================= PROFILE ================= */
+
+        .profile-card {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            border-radius: 25px;
+            padding: 45px;
+            text-align: center;
+            border: 1px solid #e5eaf1;
+        }
+
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0b4b91, #3ca4e8);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .profile-card h2 {
+            font-size: 25px;
+        }
+
+        .profile-role {
+            color: #8290a7;
+            margin: 5px 0 30px;
+        }
+
+        .profile-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            text-align: left;
+        }
+
+        .profile-info > div {
+            padding: 15px;
+            background: #f7faff;
+            border-radius: 12px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .profile-info i {
+            color: #1769aa;
+        }
+
+        .profile-info span {
+            display: flex;
+            flex-direction: column;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .profile-info small {
+            color: #8a96a7;
+            font-size: 10px;
+            margin-bottom: 2px;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #0b1f44;
+            color: white;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .footer-logo i {
+            margin-right: 7px;
+        }
+
+        footer p {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-bottom: 12px;
+        }
+
+        footer span {
+            font-size: 10px;
+            opacity: 0.5;
+        }
+
+
+        /* ================= BACK TO TOP ================= */
+
+        .back-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
+            background: #1268aa;
+            color: white;
+            cursor: pointer;
+            display: none;
+            z-index: 900;
+        }
+
+        .back-top.show {
+            display: block;
+        }
+
+
+        /* ================= DARK MODE ================= */
+
+        body.dark {
+            background: #101827;
+            color: #f0f4fa;
+        }
+
+        body.dark .topbar,
+        body.dark .welcome-card,
+        body.dark .info-card,
+        body.dark .upload-card,
+        body.dark .preview-container,
+        body.dark .video-card,
+        body.dark .material-card,
+        body.dark .material-box,
+        body.dark .color-section,
+        body.dark .steps,
+        body.dark .profile-card {
+            background: #182334;
+            border-color: #27364c;
+        }
+
+        body.dark .topbar {
+            border-bottom-color: #27364c;
+        }
+
+        body.dark .welcome-card p,
+        body.dark .info-card p,
+        body.dark .material-card p,
+        body.dark .material-box p,
+        body.dark .material-box li,
+        body.dark .section-title p,
+        body.dark .profile-role {
+            color: #aeb9c9;
+        }
+
+        body.dark .profile-info > div,
+        body.dark .step {
+            background: #202d40;
+        }
+
+        body.dark .ppt-preview {
+            background: #101722;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: 0.3s;
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .mobile-menu {
+                display: block;
+                border: none;
+                background: transparent;
+                font-size: 20px;
+                margin-right: 15px;
+                cursor: pointer;
+            }
+
+            .topbar {
+                justify-content: flex-start;
+            }
+
+            .topbar-icon {
+                margin-left: auto;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .info-grid,
+            .material-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .wire-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .page-section {
+                padding: 35px 20px;
+            }
+
+            .topbar {
+                padding: 0 20px;
+            }
+
+            .hero {
+                padding: 35px 25px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-image {
+                transform: scale(0.8);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+            .profile-info {
+                grid-template-columns: 1fr;
+            }
+
+            .wire-list {
+                grid-template-columns: 1fr;
+            }
+
+            .ppt-preview {
+                height: 400px;
+            }
+
+            .video-preview {
+                height: 220px;
+            }
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-    <!-- SIDEBAR -->
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
     <aside class="sidebar" id="sidebar">
 
         <div class="logo">
+
             <div class="logo-icon">
                 <i class="fa-solid fa-network-wired"></i>
             </div>
+
             <div>
                 <h2>Keyla-LAN</h2>
                 <span>Network Learning</span>
             </div>
+
         </div>
+
 
         <nav class="menu">
 
@@ -60,20 +1109,29 @@
 
         </nav>
 
+
         <div class="sidebar-bottom">
+
             <button id="themeToggle" class="theme-button">
                 <i class="fa-solid fa-moon"></i>
                 <span>Mode Gelap</span>
             </button>
+
         </div>
 
     </aside>
 
 
-    <!-- MAIN CONTENT -->
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
     <main class="main-content">
 
+
         <!-- TOPBAR -->
+
         <header class="topbar">
 
             <button class="mobile-menu" id="mobileMenu">
@@ -92,8 +1150,13 @@
         </header>
 
 
-        <!-- ================= DASHBOARD ================= -->
+
+        <!-- =====================================================
+             DASHBOARD
+        ====================================================== -->
+
         <section id="dashboard" class="page-section">
+
 
             <div class="hero">
 
@@ -116,6 +1179,7 @@
                     </p>
 
                     <div class="hero-buttons">
+
                         <a href="#materi" class="btn primary">
                             <i class="fa-solid fa-book-open"></i>
                             Pelajari Materi
@@ -125,11 +1189,14 @@
                             <i class="fa-solid fa-play"></i>
                             Lihat Video
                         </a>
+
                     </div>
 
                 </div>
 
+
                 <div class="hero-image">
+
                     <div class="network-circle">
                         <i class="fa-solid fa-network-wired"></i>
                     </div>
@@ -143,16 +1210,25 @@
                         <i class="fa-solid fa-code-branch"></i>
                         LAN
                     </div>
+
                 </div>
 
             </div>
 
 
+
             <!-- KATA PENGANTAR -->
+
             <div class="section-title">
+
                 <span>KATA PENGANTAR</span>
-                <h2>Selamat Belajar di Keyla-LAN</h2>
+
+                <h2>
+                    Selamat Belajar di Keyla-LAN
+                </h2>
+
             </div>
+
 
             <div class="welcome-card">
 
@@ -161,6 +1237,7 @@
                 </div>
 
                 <div>
+
                     <h3>Kata Pengantar</h3>
 
                     <p>
@@ -177,15 +1254,19 @@
                         materi jaringan komputer dengan lebih mudah dan
                         menarik.
                     </p>
+
                 </div>
 
             </div>
 
 
-            <!-- CARDS -->
+
+            <!-- INFO -->
+
             <div class="info-grid">
 
                 <div class="info-card">
+
                     <div class="info-icon">
                         <i class="fa-solid fa-cable-car"></i>
                     </div>
@@ -196,10 +1277,12 @@
                         Kabel yang digunakan untuk menghubungkan
                         perangkat dalam jaringan komputer.
                     </p>
+
                 </div>
 
 
                 <div class="info-card">
+
                     <div class="info-icon">
                         <i class="fa-solid fa-code-branch"></i>
                     </div>
@@ -210,10 +1293,12 @@
                         Kabel jaringan dengan susunan warna berbeda
                         pada kedua ujung kabel.
                     </p>
+
                 </div>
 
 
                 <div class="info-card">
+
                     <div class="info-icon">
                         <i class="fa-solid fa-graduation-cap"></i>
                     </div>
@@ -224,6 +1309,7 @@
                         Berisi materi, PowerPoint, dan video tutorial
                         mengenai kabel LAN Cross Over.
                     </p>
+
                 </div>
 
             </div>
@@ -232,17 +1318,26 @@
 
 
 
-        <!-- ================= POWERPOINT ================= -->
+        <!-- =====================================================
+             POWERPOINT
+        ====================================================== -->
+
         <section id="powerpoint" class="page-section">
 
+
             <div class="section-title">
+
                 <span>POWERPOINT</span>
-                <h2>Preview Materi PowerPoint</h2>
+
+                <h2>
+                    Preview Materi PowerPoint
+                </h2>
 
                 <p>
-                    Upload file PowerPoint untuk menampilkan materi
-                    presentasi pada halaman ini.
+                    Upload file PowerPoint untuk menampilkan
+                    materi presentasi pada halaman ini.
                 </p>
+
             </div>
 
 
@@ -259,8 +1354,11 @@
                 </p>
 
                 <label for="pptUpload" class="upload-button">
+
                     <i class="fa-solid fa-upload"></i>
+
                     Pilih File PowerPoint
+
                 </label>
 
                 <input
@@ -277,14 +1375,18 @@
             </div>
 
 
+
             <div class="preview-container">
 
                 <div class="preview-header">
+
                     <h3>
                         <i class="fa-solid fa-eye"></i>
                         Preview PowerPoint
                     </h3>
+
                 </div>
+
 
                 <div id="pptPreview" class="ppt-preview">
 
@@ -292,7 +1394,9 @@
 
                         <i class="fa-solid fa-file-powerpoint"></i>
 
-                        <h3>Belum Ada PowerPoint</h3>
+                        <h3>
+                            Belum Ada PowerPoint
+                        </h3>
 
                         <p>
                             Upload file PowerPoint untuk melihat
@@ -309,35 +1413,57 @@
 
 
 
-        <!-- ================= VIDEO ================= -->
+        <!-- =====================================================
+             VIDEO
+        ====================================================== -->
+
         <section id="video" class="page-section">
 
+
             <div class="section-title">
+
                 <span>VIDEO TUTORIAL</span>
-                <h2>Video Pembelajaran</h2>
+
+                <h2>
+                    Video Pembelajaran
+                </h2>
 
                 <p>
                     Upload dua video tutorial mengenai kabel LAN
                     Cross Over.
                 </p>
+
             </div>
+
 
 
             <div class="video-grid">
 
+
                 <!-- VIDEO 1 -->
+
                 <div class="video-card">
 
                     <div class="video-header">
+
                         <div class="video-number">
                             01
                         </div>
 
                         <div>
-                            <h3>Video Tutorial 1</h3>
-                            <p>Pengenalan Kabel LAN</p>
+
+                            <h3>
+                                Video Tutorial 1
+                            </h3>
+
+                            <p>
+                                Pengenalan Kabel LAN
+                            </p>
+
                         </div>
+
                     </div>
+
 
                     <div class="video-preview">
 
@@ -346,20 +1472,36 @@
                             controls
                             preload="metadata"
                         >
-                            Browser Anda tidak mendukung video.
                         </video>
 
-                        <div id="videoPlaceholder1" class="video-placeholder">
+
+                        <div
+                            id="videoPlaceholder1"
+                            class="video-placeholder"
+                        >
+
                             <i class="fa-solid fa-video"></i>
-                            <p>Preview video akan muncul di sini</p>
+
+                            <p>
+                                Preview video akan muncul di sini
+                            </p>
+
                         </div>
 
                     </div>
 
-                    <label for="videoUpload1" class="video-upload">
+
+                    <label
+                        for="videoUpload1"
+                        class="video-upload"
+                    >
+
                         <i class="fa-solid fa-cloud-arrow-up"></i>
+
                         Upload Video 1
+
                     </label>
+
 
                     <input
                         type="file"
@@ -368,26 +1510,42 @@
                         hidden
                     >
 
-                    <p id="videoName1" class="file-name">
+
+                    <p
+                        id="videoName1"
+                        class="file-name"
+                    >
                         Belum ada video
                     </p>
 
                 </div>
 
 
+
                 <!-- VIDEO 2 -->
+
                 <div class="video-card">
 
                     <div class="video-header">
+
                         <div class="video-number">
                             02
                         </div>
 
                         <div>
-                            <h3>Video Tutorial 2</h3>
-                            <p>Pembuatan Kabel Cross Over</p>
+
+                            <h3>
+                                Video Tutorial 2
+                            </h3>
+
+                            <p>
+                                Pembuatan Kabel Cross Over
+                            </p>
+
                         </div>
+
                     </div>
+
 
                     <div class="video-preview">
 
@@ -396,20 +1554,36 @@
                             controls
                             preload="metadata"
                         >
-                            Browser Anda tidak mendukung video.
                         </video>
 
-                        <div id="videoPlaceholder2" class="video-placeholder">
+
+                        <div
+                            id="videoPlaceholder2"
+                            class="video-placeholder"
+                        >
+
                             <i class="fa-solid fa-video"></i>
-                            <p>Preview video akan muncul di sini</p>
+
+                            <p>
+                                Preview video akan muncul di sini
+                            </p>
+
                         </div>
 
                     </div>
 
-                    <label for="videoUpload2" class="video-upload">
+
+                    <label
+                        for="videoUpload2"
+                        class="video-upload"
+                    >
+
                         <i class="fa-solid fa-cloud-arrow-up"></i>
+
                         Upload Video 2
+
                     </label>
+
 
                     <input
                         type="file"
@@ -418,7 +1592,11 @@
                         hidden
                     >
 
-                    <p id="videoName2" class="file-name">
+
+                    <p
+                        id="videoName2"
+                        class="file-name"
+                    >
                         Belum ada video
                     </p>
 
@@ -430,53 +1608,71 @@
 
 
 
-        <!-- ================= MATERI ================= -->
+        <!-- =====================================================
+             MATERI
+        ====================================================== -->
+
         <section id="materi" class="page-section">
 
+
             <div class="section-title">
+
                 <span>MATERI</span>
-                <h2>Kabel LAN Cross Over</h2>
+
+                <h2>
+                    Kabel LAN Cross Over
+                </h2>
 
                 <p>
                     Pelajari dasar-dasar kabel LAN Cross Over.
                 </p>
+
             </div>
+
 
 
             <div class="material-card">
 
                 <div class="material-icon">
+
                     <i class="fa-solid fa-network-wired"></i>
+
                 </div>
 
                 <div>
-                    <h3>Pengertian</h3>
+
+                    <h3>
+                        Pengertian
+                    </h3>
 
                     <p>
-                        Kabel LAN Cross Over adalah kabel jaringan yang
-                        memiliki susunan kabel berbeda antara ujung
-                        pertama dan ujung kedua. Salah satu ujung
-                        menggunakan standar T568A dan ujung lainnya
-                        menggunakan standar T568B.
+                        Kabel LAN Cross Over adalah kabel jaringan
+                        yang memiliki susunan kabel berbeda antara
+                        ujung pertama dan ujung kedua. Salah satu
+                        ujung menggunakan standar T568A dan ujung
+                        lainnya menggunakan standar T568B.
                     </p>
+
                 </div>
 
             </div>
 
 
+
             <div class="material-grid">
+
 
                 <div class="material-box">
 
                     <i class="fa-solid fa-bullseye"></i>
 
-                    <h3>Fungsi</h3>
+                    <h3>
+                        Fungsi
+                    </h3>
 
                     <p>
                         Digunakan untuk menghubungkan perangkat
-                        jaringan tertentu secara langsung, terutama
-                        perangkat dengan jenis yang sama pada jaringan
-                        lama.
+                        jaringan tertentu secara langsung.
                     </p>
 
                 </div>
@@ -486,14 +1682,22 @@
 
                     <i class="fa-solid fa-screwdriver-wrench"></i>
 
-                    <h3>Alat & Bahan</h3>
+                    <h3>
+                        Alat & Bahan
+                    </h3>
 
                     <ul>
+
                         <li>Kabel UTP</li>
+
                         <li>Konektor RJ45</li>
+
                         <li>Tang Crimping</li>
+
                         <li>LAN Tester</li>
+
                         <li>Gunting / Cutter</li>
+
                     </ul>
 
                 </div>
@@ -503,12 +1707,13 @@
 
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
 
-                    <h3>Cross Over vs Straight</h3>
+                    <h3>
+                        Cross Over vs Straight
+                    </h3>
 
                     <p>
-                        Cross Over menggunakan T568A pada satu ujung
-                        dan T568B pada ujung lainnya. Straight Through
-                        menggunakan standar yang sama pada kedua ujung.
+                        Cross Over menggunakan T568A pada satu
+                        ujung dan T568B pada ujung lainnya.
                     </p>
 
                 </div>
@@ -516,13 +1721,23 @@
             </div>
 
 
+
             <!-- T568A -->
+
             <div class="color-section">
 
                 <div class="section-title small">
-                    <span>SUSUNAN WARNA</span>
-                    <h2>Standar T568A</h2>
+
+                    <span>
+                        SUSUNAN WARNA
+                    </span>
+
+                    <h2>
+                        Standar T568A
+                    </h2>
+
                 </div>
+
 
                 <div class="wire-list">
 
@@ -569,15 +1784,25 @@
                 </div>
 
             </div>
+
 
 
             <!-- T568B -->
+
             <div class="color-section">
 
                 <div class="section-title small">
-                    <span>SUSUNAN WARNA</span>
-                    <h2>Standar T568B</h2>
+
+                    <span>
+                        SUSUNAN WARNA
+                    </span>
+
+                    <h2>
+                        Standar T568B
+                    </h2>
+
                 </div>
+
 
                 <div class="wire-list">
 
@@ -626,74 +1851,124 @@
             </div>
 
 
+
             <!-- LANGKAH -->
+
             <div class="steps">
 
                 <div class="section-title small">
-                    <span>LANGKAH PEMBUATAN</span>
-                    <h2>Cara Membuat Kabel Cross Over</h2>
+
+                    <span>
+                        LANGKAH PEMBUATAN
+                    </span>
+
+                    <h2>
+                        Cara Membuat Kabel Cross Over
+                    </h2>
+
                 </div>
 
 
                 <div class="step-list">
 
+
                     <div class="step">
+
                         <span>01</span>
+
                         <div>
-                            <h3>Potong Kabel</h3>
+
+                            <h3>
+                                Potong Kabel
+                            </h3>
+
                             <p>
-                                Potong kabel UTP sesuai panjang yang
-                                dibutuhkan.
+                                Potong kabel UTP sesuai panjang
+                                yang dibutuhkan.
                             </p>
+
                         </div>
+
                     </div>
 
 
                     <div class="step">
+
                         <span>02</span>
+
                         <div>
-                            <h3>Susun Kabel</h3>
+
+                            <h3>
+                                Susun Kabel
+                            </h3>
+
                             <p>
-                                Susun warna kabel sesuai standar T568A
-                                dan T568B.
+                                Susun warna kabel sesuai standar
+                                T568A dan T568B.
                             </p>
+
                         </div>
+
                     </div>
 
 
                     <div class="step">
+
                         <span>03</span>
+
                         <div>
-                            <h3>Masukkan RJ45</h3>
+
+                            <h3>
+                                Masukkan RJ45
+                            </h3>
+
                             <p>
-                                Masukkan kabel yang telah disusun ke
-                                konektor RJ45.
+                                Masukkan kabel yang telah disusun
+                                ke konektor RJ45.
                             </p>
+
                         </div>
+
                     </div>
 
 
                     <div class="step">
+
                         <span>04</span>
+
                         <div>
-                            <h3>Crimping</h3>
+
+                            <h3>
+                                Crimping
+                            </h3>
+
                             <p>
-                                Gunakan tang crimping untuk mengunci
-                                kabel pada konektor RJ45.
+                                Gunakan tang crimping untuk
+                                mengunci kabel pada konektor RJ45.
                             </p>
+
                         </div>
+
                     </div>
 
 
                     <div class="step">
+
                         <span>05</span>
+
                         <div>
-                            <h3>Testing</h3>
+
+                            <h3>
+                                Testing
+                            </h3>
+
                             <p>
                                 Gunakan LAN Tester untuk memastikan
                                 kabel telah tersusun dengan benar.
                             </p>
+
                         </div>
+
                     </div>
 
                 </div>
@@ -704,22 +1979,39 @@
 
 
 
-        <!-- ================= IDENTITAS ================= -->
+        <!-- =====================================================
+             IDENTITAS
+        ====================================================== -->
+
         <section id="identitas" class="page-section">
 
+
             <div class="section-title">
-                <span>IDENTITAS</span>
-                <h2>Identitas Pembuat</h2>
+
+                <span>
+                    IDENTITAS
+                </span>
+
+                <h2>
+                    Identitas Pembuat
+                </h2>
+
             </div>
 
 
             <div class="profile-card">
 
+
                 <div class="profile-image">
+
                     <i class="fa-solid fa-user"></i>
+
                 </div>
 
-                <h2>Keyla Azzahra</h2>
+
+                <h2>
+                    Keyla Azzahra
+                </h2>
 
                 <p class="profile-role">
                     Siswa / Pelajar
@@ -728,58 +2020,108 @@
 
                 <div class="profile-info">
 
+
                     <div>
+
                         <i class="fa-solid fa-user"></i>
+
                         <span>
-                            <small>Nama</small>
+
+                            <small>
+                                Nama
+                            </small>
+
                             Keyla Azzahra
+
                         </span>
+
                     </div>
 
 
                     <div>
+
                         <i class="fa-solid fa-school"></i>
+
                         <span>
-                            <small>Sekolah</small>
+
+                            <small>
+                                Sekolah
+                            </small>
+
                             [Nama Sekolah]
+
                         </span>
+
                     </div>
 
 
                     <div>
+
                         <i class="fa-solid fa-graduation-cap"></i>
+
                         <span>
-                            <small>Kelas</small>
+
+                            <small>
+                                Kelas
+                            </small>
+
                             [Kelas]
+
                         </span>
+
                     </div>
 
 
                     <div>
+
                         <i class="fa-solid fa-laptop-code"></i>
+
                         <span>
-                            <small>Jurusan</small>
+
+                            <small>
+                                Jurusan
+                            </small>
+
                             [Jurusan]
+
                         </span>
+
                     </div>
 
 
                     <div>
+
                         <i class="fa-solid fa-book"></i>
+
                         <span>
-                            <small>Mata Pelajaran</small>
+
+                            <small>
+                                Mata Pelajaran
+                            </small>
+
                             Jaringan Komputer
+
                         </span>
+
                     </div>
 
 
                     <div>
+
                         <i class="fa-solid fa-network-wired"></i>
+
                         <span>
-                            <small>Materi</small>
+
+                            <small>
+                                Materi
+                            </small>
+
                             Kabel LAN Cross Over
+
                         </span>
+
                     </div>
+
 
                 </div>
 
@@ -789,12 +2131,18 @@
 
 
 
-        <!-- FOOTER -->
+        <!-- =====================================================
+             FOOTER
+        ====================================================== -->
+
         <footer>
 
             <div class="footer-logo">
+
                 <i class="fa-solid fa-network-wired"></i>
+
                 Keyla-LAN
+
             </div>
 
             <p>
@@ -810,13 +2158,492 @@
     </main>
 
 
+
     <!-- BACK TO TOP -->
+
     <button id="backToTop" class="back-top">
+
         <i class="fa-solid fa-arrow-up"></i>
+
     </button>
 
 
-    <script src="script.js"></script>
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* ===============================
+           SIDEBAR MOBILE
+        ================================ */
+
+        const mobileMenu =
+            document.getElementById("mobileMenu");
+
+        const sidebar =
+            document.getElementById("sidebar");
+
+
+        mobileMenu.addEventListener("click", () => {
+
+            sidebar.classList.toggle("show");
+
+        });
+
+
+        document
+            .querySelectorAll(".menu-item")
+            .forEach(item => {
+
+                item.addEventListener("click", () => {
+
+                    if (window.innerWidth <= 1000) {
+
+                        sidebar.classList.remove("show");
+
+                    }
+
+                });
+
+            });
+
+
+
+        /* ===============================
+           ACTIVE MENU
+        ================================ */
+
+        const sections =
+            document.querySelectorAll(".page-section");
+
+        const menuItems =
+            document.querySelectorAll(".menu-item");
+
+
+        window.addEventListener("scroll", () => {
+
+            let current = "";
+
+            sections.forEach(section => {
+
+                const sectionTop =
+                    section.offsetTop - 150;
+
+                if (window.scrollY >= sectionTop) {
+
+                    current =
+                        section.getAttribute("id");
+
+                }
+
+            });
+
+
+            menuItems.forEach(item => {
+
+                item.classList.remove("active");
+
+                if (
+                    item.getAttribute("href")
+                    === "#" + current
+                ) {
+
+                    item.classList.add("active");
+
+                }
+
+            });
+
+        });
+
+
+
+        /* ===============================
+           DARK MODE
+        ================================ */
+
+        const themeToggle =
+            document.getElementById("themeToggle");
+
+
+        themeToggle.addEventListener("click", () => {
+
+            document.body.classList.toggle("dark");
+
+
+            const icon =
+                themeToggle.querySelector("i");
+
+            const text =
+                themeToggle.querySelector("span");
+
+
+            if (
+                document.body.classList.contains("dark")
+            ) {
+
+                icon.className =
+                    "fa-solid fa-sun";
+
+                text.textContent =
+                    "Mode Terang";
+
+            } else {
+
+                icon.className =
+                    "fa-solid fa-moon";
+
+                text.textContent =
+                    "Mode Gelap";
+
+            }
+
+        });
+
+
+
+        /* ===============================
+           POWERPOINT UPLOAD
+        ================================ */
+
+        const pptUpload =
+            document.getElementById("pptUpload");
+
+        const pptFileName =
+            document.getElementById("pptFileName");
+
+        const pptPreview =
+            document.getElementById("pptPreview");
+
+
+        pptUpload.addEventListener("change", function () {
+
+            const file = this.files[0];
+
+            if (!file) {
+                return;
+            }
+
+
+            pptFileName.textContent =
+                "File: " + file.name;
+
+
+            window.currentPPT = file;
+
+
+            pptPreview.innerHTML = `
+
+                <div class="empty-preview">
+
+                    <i class="fa-solid fa-file-powerpoint"></i>
+
+                    <h3>
+                        ${file.name}
+                    </h3>
+
+                    <p>
+                        File PowerPoint berhasil dipilih.
+                    </p>
+
+                    <p>
+                        File dapat dibuka menggunakan
+                        Microsoft PowerPoint.
+                    </p>
+
+                    <button
+                        onclick="downloadPPT()"
+                        style="
+                            margin-top:15px;
+                            padding:11px 18px;
+                            border:none;
+                            border-radius:8px;
+                            background:#1268aa;
+                            color:white;
+                            cursor:pointer;
+                            font-family:Poppins;
+                        "
+                    >
+
+                        <i class="fa-solid fa-download"></i>
+
+                        Buka / Download PowerPoint
+
+                    </button>
+
+                </div>
+
+            `;
+
+        });
+
+
+
+        /* ===============================
+           DOWNLOAD POWERPOINT
+        ================================ */
+
+        function downloadPPT() {
+
+            if (!window.currentPPT) {
+
+                alert(
+                    "Silakan pilih file PowerPoint terlebih dahulu."
+                );
+
+                return;
+
+            }
+
+
+            const url =
+                URL.createObjectURL(
+                    window.currentPPT
+                );
+
+
+            const link =
+                document.createElement("a");
+
+
+            link.href = url;
+
+            link.download =
+                window.currentPPT.name;
+
+
+            document.body.appendChild(link);
+
+            link.click();
+
+            document.body.removeChild(link);
+
+
+            URL.revokeObjectURL(url);
+
+        }
+
+
+
+        /* ===============================
+           VIDEO 1
+        ================================ */
+
+        const videoUpload1 =
+            document.getElementById("videoUpload1");
+
+        const videoPlayer1 =
+            document.getElementById("videoPlayer1");
+
+        const videoPlaceholder1 =
+            document.getElementById(
+                "videoPlaceholder1"
+            );
+
+        const videoName1 =
+            document.getElementById("videoName1");
+
+
+        videoUpload1.addEventListener(
+            "change",
+            function () {
+
+                const file = this.files[0];
+
+                if (!file) {
+                    return;
+                }
+
+
+                if (!file.type.startsWith("video/")) {
+
+                    alert(
+                        "Silakan pilih file video."
+                    );
+
+                    return;
+
+                }
+
+
+                const videoURL =
+                    URL.createObjectURL(file);
+
+
+                videoPlayer1.src =
+                    videoURL;
+
+
+                videoPlayer1.style.display =
+                    "block";
+
+
+                videoPlaceholder1.style.display =
+                    "none";
+
+
+                videoName1.textContent =
+                    "File: " + file.name;
+
+            }
+        );
+
+
+
+        /* ===============================
+           VIDEO 2
+        ================================ */
+
+        const videoUpload2 =
+            document.getElementById("videoUpload2");
+
+        const videoPlayer2 =
+            document.getElementById("videoPlayer2");
+
+        const videoPlaceholder2 =
+            document.getElementById(
+                "videoPlaceholder2"
+            );
+
+        const videoName2 =
+            document.getElementById("videoName2");
+
+
+        videoUpload2.addEventListener(
+            "change",
+            function () {
+
+                const file = this.files[0];
+
+                if (!file) {
+                    return;
+                }
+
+
+                if (!file.type.startsWith("video/")) {
+
+                    alert(
+                        "Silakan pilih file video."
+                    );
+
+                    return;
+
+                }
+
+
+                const videoURL =
+                    URL.createObjectURL(file);
+
+
+                videoPlayer2.src =
+                    videoURL;
+
+
+                videoPlayer2.style.display =
+                    "block";
+
+
+                videoPlaceholder2.style.display =
+                    "none";
+
+
+                videoName2.textContent =
+                    "File: " + file.name;
+
+            }
+        );
+
+
+
+        /* ===============================
+           BACK TO TOP
+        ================================ */
+
+        const backToTop =
+            document.getElementById("backToTop");
+
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 400) {
+
+                backToTop.classList.add("show");
+
+            } else {
+
+                backToTop.classList.remove("show");
+
+            }
+
+        });
+
+
+        backToTop.addEventListener("click", () => {
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        });
+
+
+
+        /* ===============================
+           ANIMASI CARD
+        ================================ */
+
+        const observer =
+            new IntersectionObserver(
+
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.style.opacity = "1";
+
+                            entry.target.style.transform =
+                                "translateY(0)";
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    threshold: 0.1
+                }
+
+            );
+
+
+        document
+            .querySelectorAll(
+                ".info-card, .video-card, .material-box, .material-card, .profile-card"
+            )
+            .forEach(element => {
+
+                element.style.opacity = "0";
+
+                element.style.transform =
+                    "translateY(20px)";
+
+                element.style.transition =
+                    "all 0.6s ease";
+
+                observer.observe(element);
+
+            });
+
+    </script>
 
 </body>
 </html>
